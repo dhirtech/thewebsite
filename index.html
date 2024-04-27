@@ -4,81 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
         }
 
         header {
-            background-color: #333;
-            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
             padding: 20px;
-            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
         nav {
-            background-color: #444;
-            padding: 10px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 20px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
         }
 
         section {
-            padding: 20px;
-            margin: 20px;
-            background-color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-heading {
+            margin-bottom: 40px;
+        }
+
+        .social-links {
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #2c3e50;
+            color: #fff;
+            border-radius: 50%;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #3498db;
         }
 
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 10px;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .back-to-top {
             position: fixed;
-            bottom: 0;
-            width: 100%;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-top:hover {
+            background-color: #2c3e50;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .fadeInUp {
+            animation-name: fadeInUp;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>My Portfolio</h1>
+        <a href="#" class="logo">My Portfolio</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Write something about yourself here.</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div>
-            <h3>Project 1</h3>
-            <p>Description of Project 1</p>
-        </div>
-        <div>
-            <h3>Project 2</h3>
-            <p>Description of Project 2</p>
+
+    <section id="about" class="animated fadeInUp">
+        <h2 class="section-heading">About Me</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sodales, finibus dui eget, tempus lectus.</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
     </section>
-    <section id="contact">
-        <h2>Contact</h2>
+
+    <section id="projects" class="animated fadeInUp">
+        <h2 class="section-heading">Projects</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo sodales, finibus dui eget, tempus lectus.</p>
+    </section>
+
+    <section id="contact" class="animated fadeInUp">
+        <h2 class="section-heading">Contact</h2>
         <p>Email: example@example.com</p>
         <p>Phone: 123-456-7890</p>
     </section>
+
     <footer>
         &copy; 2024 My Portfolio
     </footer>
+
+    <div class="back-to-top" onclick="scrollToTop()">&#8593;</div>
+
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.querySelector('.back-to-top').style.display = "block";
+            } else {
+                document.querySelector('.back-to-top').style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 </body>
 </html>
